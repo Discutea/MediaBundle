@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Discutea\MediaBundle\:
+        resource: '../../*'
+        exclude: '../../*/{DependencyInjection,Tests}'
+
+    Discutea\MediaBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']

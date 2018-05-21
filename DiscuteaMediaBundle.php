@@ -1,16 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: david
- * Date: 21/05/18
- * Time: 17:26
- */
 
 namespace Discutea\MediaBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class DiscuteaMediaBundle extends Bundle
 {
-
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+    }
 }
