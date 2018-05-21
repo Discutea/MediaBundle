@@ -1,0 +1,23 @@
+{
+    "name": "discutea/media-bundle",
+    "description": "Symfony DiscuteaMediaBundle",
+    "keywords": ["symfony", "media", "bundle", "imagine", "upload", "file", "form"],
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "David Verdier",
+            "email": "contact@discutea.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "symfony/framework-bundle": "^4.0",
+        "jms/serializer": "^1.1",
+        "doctrine/orm": "^2.5"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": { "Discutea\\MediaBundle\\": "" }
+    }
+}
