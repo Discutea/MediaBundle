@@ -21,7 +21,7 @@ class MediaExtension extends \Twig_Extension
         );
     }
 
-    public function mediaUrlFilter(MediaInterface $media, $alias = null)
+    public function mediaUrlFilter(MediaInterface $media = null, $alias = null)
     {
         return $this->mediaManager->getUrl($media, $alias);
     }

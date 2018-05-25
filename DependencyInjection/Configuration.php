@@ -15,7 +15,12 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root(self::ALIAS);
         $rootNode
             ->children()
-            ->scalarNode('path')->end()
+                ->arrayNode('config')
+                    ->children()
+                        ->scalarNode('path')->end()
+                        ->scalarNode('url')->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

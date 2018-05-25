@@ -6,8 +6,12 @@ services:
 
     Discutea\MediaBundle\:
         resource: '../../*'
-        exclude: '../../*/{DependencyInjection,Tests}'
+        exclude: '../../*/{vendor,DependencyInjection,Tests}'
 
     Discutea\MediaBundle\Controller\:
         resource: '../../Controller'
         tags: ['controller.service_arguments']
+
+    Discutea\MediaBundle\Services\Config:
+        arguments:
+            $config: '%discutea_media.config%'
