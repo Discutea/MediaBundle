@@ -17,6 +17,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('config')
                     ->children()
+                        ->scalarNode('media_class')->end()
                         ->scalarNode('path')->end()
                         ->scalarNode('url')->end()
                     ->end()
