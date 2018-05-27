@@ -8,22 +8,28 @@
 
 namespace Discutea\MediaBundle\Listener;
 
-use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Templating\EngineInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\Templating\Helper\CoreAssetsHelper;
-use Symfony\Component\Templating\DelegatingEngine;
 use Symfony\Component\HttpKernel\HttpKernel;
-
 
 class MediaContentListener
 {
+    /**
+     * @var Packages
+     */
     private $assetsHelper;
 
+    /**
+     * @var EngineInterface
+     */
     private $templating;
 
+    /**
+     * MediaContentListener constructor.
+     * @param Packages $assetsHelper
+     * @param EngineInterface $engine
+     */
     public function __construct(Packages $assetsHelper, EngineInterface $engine)
     {
         $this->assetsHelper = $assetsHelper;
@@ -35,14 +41,13 @@ class MediaContentListener
      * and add css, js and templates for mustaches.
      *
      * @param FilterResponseEvent $event
-     *
-     * @return FilterResponseEvent
      */
     public function addContent(FilterResponseEvent $event)
     {
         if (HttpKernel::MASTER_REQUEST != $event->getRequestType()) {
             return;
         }
+
         $response = $event->getResponse();
         $content = $response->getContent();
 

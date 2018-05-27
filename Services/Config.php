@@ -11,18 +11,33 @@ namespace Discutea\MediaBundle\Services;
 
 class Config
 {
+    /**
+     * @var array
+     */
     private $config;
 
+    /**
+     * Config constructor.
+     * @param array $config
+     */
     public function __construct(array $config)
     {
         $this->config = $config;
     }
 
-    public function has($key)
+    /**
+     * @param string $key
+     * @return bool
+     */
+    public function has(string $key): bool
     {
         return array_key_exists($key, $this->config);
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public function get($key)
     {
         if (false === $this->has($key)) {

@@ -7,13 +7,23 @@ use Discutea\MediaBundle\Model\MediaInterface;
 
 class MediaExtension extends \Twig_Extension
 {
+    /**
+     * @var MediaManagerInterface
+     */
     private $mediaManager;
 
+    /**
+     * MediaExtension constructor.
+     * @param MediaManagerInterface $mediaManager
+     */
     public function __construct(MediaManagerInterface $mediaManager)
     {
         $this->mediaManager = $mediaManager;
     }
 
+    /**
+     * @return array|\Twig_Filter[]
+     */
     public function getFilters()
     {
         return array(
@@ -21,11 +31,19 @@ class MediaExtension extends \Twig_Extension
         );
     }
 
-    public function mediaUrlFilter(MediaInterface $media = null, $alias = null)
+    /**
+     * @param MediaInterface|null $media
+     * @param null $alias
+     * @return string
+     */
+    public function mediaUrlFilter(MediaInterface $media = null, $alias = null): string
     {
         return $this->mediaManager->getUrl($media, $alias);
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'discutea_media_extension';

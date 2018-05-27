@@ -9,6 +9,10 @@ use Symfony\Component\Config\FileLocator;
 
 class DiscuteaMediaExtension extends Extension
 {
+    /**
+     * @param array $configs
+     * @param ContainerBuilder $container
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();

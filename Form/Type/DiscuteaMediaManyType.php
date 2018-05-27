@@ -14,7 +14,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Discutea\MediaBundle\Services\Filter;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\AbstractTypeExtension;
 
 class DiscuteaMediaManyType extends AbstractType
 {
@@ -23,6 +22,10 @@ class DiscuteaMediaManyType extends AbstractType
      */
     private $filter;
 
+    /**
+     * DiscuteaMediaManyType constructor.
+     * @param Filter $filter
+     */
     public function __construct(Filter $filter)
     {
         $this->filter = $filter;
@@ -35,6 +38,7 @@ class DiscuteaMediaManyType extends AbstractType
     {
         $view->vars['filter'] = $this->filter->set($options['filter']);
     }
+
     /**
      * {@inheritDoc}
      */
@@ -50,6 +54,7 @@ class DiscuteaMediaManyType extends AbstractType
             'error_bubbling' => false,
         ));
     }
+
     /**
      * {@inheritDoc}
      */
@@ -57,6 +62,7 @@ class DiscuteaMediaManyType extends AbstractType
     {
         return CollectionType::class;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -64,6 +70,7 @@ class DiscuteaMediaManyType extends AbstractType
     {
         return CollectionType::class;
     }
+
     /**
      * {@inheritDoc}
      */

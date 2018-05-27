@@ -2,36 +2,67 @@
 
 namespace Discutea\MediaBundle\Services;
 
-use Discutea\MediaBundle\Manager\MediaManagerInterface;
 use Discutea\MediaBundle\Model\MediaInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileManager
 {
+    /**
+     * @var Config
+     */
     private $config;
 
+    /**
+     * @var AliasManager
+     */
     private $aliasManager;
 
+    /**
+     * @var MediaInterface
+     */
     private $media;
 
+    /**
+     * @var string
+     */
     private $directory;
 
+    /**
+     * @var string
+     */
     private $aliasAndKey;
 
+    /**
+     * @var string
+     */
     private $url;
 
+    /**
+     * @var string
+     */
     private $original;
 
+    /**
+     * @var bool
+     */
     private $notFound = false;
 
+    /**
+     * FileManager constructor.
+     * @param Config $config
+     */
     public function __construct(Config $config)
     {
         $this->config = $config;
     }
 
+    /**
+     * @param MediaInterface|null $media
+     * @param AliasManager $aliasManager
+     * @return FileManager
+     */
     public function build(MediaInterface $media = null, AliasManager $aliasManager): FileManager
     {
         $this->aliasManager = $aliasManager;
@@ -55,12 +86,18 @@ class FileManager
         return $this;
     }
 
-    public function getUrl()
+    /**
+     * @return string
+     */
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    private function crop()
+    /**
+     * @return FileManager
+     */
+    private function crop(): FileManager
     {
         if (!file_exists($this->original)) {
             if (null === $this->media) {

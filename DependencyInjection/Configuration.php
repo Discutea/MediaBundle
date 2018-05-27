@@ -9,6 +9,9 @@ class Configuration implements ConfigurationInterface
 {
     const ALIAS = 'discutea_media';
 
+    /**
+     * @return TreeBuilder
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();

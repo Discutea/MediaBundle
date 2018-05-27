@@ -16,16 +16,31 @@ use Discutea\MediaBundle\Model\MediaInterface;
 
 class MediaToIdTransformer implements DataTransformerInterface
 {
+    /**
+     * @var Config
+     */
     private $config;
 
+    /**
+     * @var EntityManagerInterface
+     */
     private $entityManager;
 
+    /**
+     * MediaToIdTransformer constructor.
+     * @param EntityManagerInterface $entityManager
+     * @param Config $config
+     */
     public function __construct(EntityManagerInterface $entityManager, Config $config)
     {
         $this->entityManager = $entityManager;
         $this->config = $config;
     }
 
+    /**
+     * @param $media
+     * @return int|null|string
+     */
     public function transform($media)
     {
         if (!$media instanceof MediaInterface) {
@@ -35,10 +50,14 @@ class MediaToIdTransformer implements DataTransformerInterface
         return $media->getId();
     }
 
-    public function reverseTransform($id)
+    /**
+     * @param int $id
+     * @return MediaInterface|null
+     */
+    public function reverseTransform($id): ?MediaInterface
     {
         if (!$id) {
-            return;
+            return null;
         }
 
         $media = $this->entityManager

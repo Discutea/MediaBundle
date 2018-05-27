@@ -13,12 +13,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
 use Discutea\MediaBundle\Form\DataTransformer\MediaToIdTransformer;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\AbstractTypeExtension;
 
 class DiscuteaMediaOneForCollectionType extends AbstractType
 {
+    /**
+     * @var MediaToIdTransformer
+     */
     private $transformer;
 
+    /**
+     * DiscuteaMediaOneForCollectionType constructor.
+     * @param MediaToIdTransformer $transformer
+     */
     public function __construct(MediaToIdTransformer $transformer)
     {
         $this->transformer = $transformer;
@@ -31,6 +37,7 @@ class DiscuteaMediaOneForCollectionType extends AbstractType
     {
         $builder->addModelTransformer($this->transformer);
     }
+
     /**
      * {@inheritDoc}
      */
@@ -42,6 +49,7 @@ class DiscuteaMediaOneForCollectionType extends AbstractType
             'filter' => null,
         ));
     }
+
     /**
      * {@inheritDoc}
      */
@@ -49,6 +57,7 @@ class DiscuteaMediaOneForCollectionType extends AbstractType
     {
         return HiddenType::class;
     }
+
     /**
      * {@inheritDoc}
      */
@@ -56,6 +65,7 @@ class DiscuteaMediaOneForCollectionType extends AbstractType
     {
         return HiddenType::class;
     }
+
     /**
      * {@inheritDoc}
      */

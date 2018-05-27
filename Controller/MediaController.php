@@ -3,20 +3,20 @@
 namespace Discutea\MediaBundle\Controller;
 
 use Discutea\MediaBundle\Manager\MediaManagerInterface;
-use Discutea\MediaBundle\Services\Config;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class MediaController extends Controller
 {
     /**
-     * @Method({"POST"})
+     * @param Request $request
+     * @param MediaManagerInterface $manager
+     * @return Response
+     *
+     *      * @Method({"POST"})
      * @Route("/post", name="discutea_media_image_post")
      */
     public function postImageAction(Request $request, MediaManagerInterface $manager)

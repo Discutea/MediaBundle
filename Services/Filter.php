@@ -12,12 +12,14 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Filter
 {
+    /**
+     * @var SessionInterface
+     */
     private $session;
 
     /**
-     * constructor.
-     *
-     * @param Session $session
+     * Filter constructor.
+     * @param SessionInterface $session
      */
     public function __construct(SessionInterface $session)
     {

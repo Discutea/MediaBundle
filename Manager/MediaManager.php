@@ -10,16 +10,27 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MediaManager implements MediaManagerInterface
 {
-    private $path;
-
-    private $originalDir;
-
+    /**
+     * @var AliasManager
+     */
     private $aliasManager;
 
+    /**
+     * @var FileManager
+     */
     private $fileManager;
 
+    /**
+     * @var Config
+     */
     private $config;
 
+    /**
+     * MediaManager constructor.
+     * @param AliasManager $aliasManager
+     * @param FileManager $fileManager
+     * @param Config $config
+     */
     public function __construct(AliasManager $aliasManager, FileManager $fileManager, Config $config)
     {
         $this->aliasManager = $aliasManager;
@@ -27,6 +38,11 @@ class MediaManager implements MediaManagerInterface
         $this->config = $config;
     }
 
+    /**
+     * @param MediaInterface|null $media
+     * @param null $alias
+     * @return string
+     */
     public function getUrl(MediaInterface $media = null, $alias = null): string
     {
         $this->aliasManager->buildAlias($alias);
@@ -35,6 +51,11 @@ class MediaManager implements MediaManagerInterface
         return $this->fileManager->getUrl();
     }
 
+    /**
+     * @param UploadedFile $file
+     * @return MediaInterface
+     * @throws \Exception
+     */
     public function create(UploadedFile $file): MediaInterface
     {
         $class = $this->config->get('media_class');
@@ -58,5 +79,4 @@ class MediaManager implements MediaManagerInterface
 
         return $media;
     }
-
 }
