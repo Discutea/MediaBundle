@@ -1,0 +1,4 @@
+discutea_media_media_routing:
+    resource: "@DiscuteaMediaBundle/Controller/MediaController.php"
+    prefix:   /discutea/media
+    type:     annotation

@@ -15,9 +15,8 @@
         "symfony/framework-bundle": "^4.0",
         "jms/serializer": "^1.1",
         "doctrine/orm": "^2.5",
-        "imagine/imagine": "^0.7.1"
+        "imagine/imagine": "^0.7"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": { "Discutea\\MediaBundle\\": "" }
     }

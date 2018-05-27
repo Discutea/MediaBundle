@@ -15,3 +15,7 @@ services:
     Discutea\MediaBundle\Services\Config:
         arguments:
             $config: '%discutea_media.config%'
+
+    Discutea\MediaBundle\Listener\MediaContentListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: addContent }

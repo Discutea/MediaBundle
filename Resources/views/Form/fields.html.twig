@@ -1,19 +1,10 @@
 {% block discutea_media_many_row %}
-    {% embed "DiscuteaMediaBundle:Form:fields_base.html.twig" with {'form': form} %}
-        {% block type %}many{% endblock %}
-        {% block loading %}{{ 'views.form.fields.loadMany'|trans({}, "DiscuteaMediaBundle") }}{% endblock %}
-    {% endembed %}
-{% endblock %}
+    <div class="dropzone"
+         id="discuteaDropzone"
+         data-discutea-media="true"
+         data-repeator-id="{{ form.vars.id }}"
+         data-action="{{path('discutea_media_image_post')}}">
+    </div>
 
-
-{% block discutea_media_one_row %}
-    {% embed "DiscuteaMediaBundle:Form:fields_base.html.twig" with {'form': form} %}
-        {% block type %}one{% endblock %}
-        {% block loading %}{{ 'views.form.fields.loadOne'|trans({}, "DiscuteaMediaBundle") }}{% endblock %}
-    {% endembed %}
-{% endblock %}
-
-
-{% block discutea_media_one_for_collection_row %}
     {{ form_widget(form) }}
 {% endblock %}
