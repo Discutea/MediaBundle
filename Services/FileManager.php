@@ -7,6 +7,7 @@ use Discutea\MediaBundle\Model\MediaInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileManager
 {
