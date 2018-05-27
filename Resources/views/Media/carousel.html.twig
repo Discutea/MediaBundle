@@ -1,0 +1,11 @@
+<div data-discutea-carousel="true" class="slider">
+    {% for media in medias %}
+        {% if medias|length > 1 %}
+            <input type="radio" name="slide_switch" id="id{{ loop.index }}" {{ loop.index == 1 ? 'checked' }} />
+                <label for="id{{ loop.index }}">
+                <img src="{{ asset(media|media_url({width: 640, height: 320})) }}" width="100"/>
+            </label>
+        {% endif %}
+        <img src="{{ asset(media|media_url({width: 640, height: 320})) }}"/>
+    {% endfor %}
+</div>

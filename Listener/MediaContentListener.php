@@ -60,5 +60,16 @@ class MediaContentListener
             $response->setContent($content);
             $event->setResponse($response);
         }
+
+        if (strpos($content, 'data-discutea-carousel="') !== false) {
+            $css = sprintf(
+                '<link rel="stylesheet" type="text/css"  href="%s" />',
+                $this->assetsHelper->getUrl('bundles/discuteamedia/css/carousel.css')
+            );
+
+            $content = preg_replace('#</head>#', $css.'</head>', $content);
+            $response->setContent($content);
+            $event->setResponse($response);
+        }
     }
 }

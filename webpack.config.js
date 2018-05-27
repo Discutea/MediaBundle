@@ -9,7 +9,6 @@ Encore
     .setPublicPath('/public')
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
-    .enableVersioning(Encore.isProduction())
     .enablePostCssLoader(function(options) {
         options.config = {
             path: './postcss.config.js'
@@ -20,6 +19,9 @@ Encore
     ])
     .addStyleEntry('css/main', [
         './assets/less/main.less'
+    ])
+    .addStyleEntry('css/carousel', [
+        './assets/less/carousel.less'
     ])
     .addLoader(
         {

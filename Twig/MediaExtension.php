@@ -12,13 +12,16 @@ class MediaExtension extends \Twig_Extension
      */
     private $mediaManager;
 
+    private $environment;
+
     /**
      * MediaExtension constructor.
      * @param MediaManagerInterface $mediaManager
      */
-    public function __construct(MediaManagerInterface $mediaManager)
+    public function __construct(\Twig_Environment $environment, MediaManagerInterface $mediaManager)
     {
         $this->mediaManager = $mediaManager;
+        $this->environment = $environment;
     }
 
     /**
@@ -28,6 +31,7 @@ class MediaExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('media_url', array($this, 'mediaUrlFilter')),
+            new \Twig_SimpleFilter('media_html', array($this, 'mediaHtmlFilter'))
         );
     }
 
@@ -39,6 +43,13 @@ class MediaExtension extends \Twig_Extension
     public function mediaUrlFilter(MediaInterface $media = null, $alias = null): string
     {
         return $this->mediaManager->getUrl($media, $alias);
+    }
+
+    public function mediaHtmlFilter($media): string
+    {
+        return $this->environment->render('@DiscuteaMedia/Media/carousel.html.twig', array(
+            'medias' => $media
+        ));
     }
 
     /**

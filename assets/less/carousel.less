@@ -1,0 +1,46 @@
+.slider {
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+    margin: auto;
+    padding-top: 320px;
+    position: relative;
+    width: 100%;
+
+    input[name='slide_switch'] {
+        display: none;
+
+        &:checked + label {
+            border-color: #666;
+            opacity: 1;
+        }
+
+        &:checked + label + img {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    label {
+        border: 3px solid #999;
+        cursor: pointer;
+        float: left;
+        margin: 18px 0 0 18px;
+        opacity: 0.6;
+        transition: all 0.5s;
+
+        img {
+            display: block;
+        }
+    }
+
+    input[name='slide_switch'] ~ img {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+.slider > img {
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s;
+}
