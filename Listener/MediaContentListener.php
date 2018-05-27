@@ -9,7 +9,6 @@
 namespace Discutea\MediaBundle\Listener;
 
 use Symfony\Component\Asset\Packages;
-use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernel;
 
@@ -21,19 +20,13 @@ class MediaContentListener
     private $assetsHelper;
 
     /**
-     * @var EngineInterface
-     */
-    private $templating;
-
-    /**
      * MediaContentListener constructor.
      * @param Packages $assetsHelper
-     * @param EngineInterface $engine
      */
-    public function __construct(Packages $assetsHelper, EngineInterface $engine)
+    public function __construct(Packages $assetsHelper)
     {
         $this->assetsHelper = $assetsHelper;
-        $this->templating = $engine;
+
     }
 
     /**

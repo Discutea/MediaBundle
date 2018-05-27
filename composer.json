@@ -19,7 +19,6 @@
         "doctrine/orm": "^2.5",
         "imagine/imagine": "^0.7",
         "symfony/twig-bundle": "^4.0",
-        "symfony/templating": "^4.0",
         "symfony/serializer": "^4.0",
         "symfony/asset": "^4.0"
     },
